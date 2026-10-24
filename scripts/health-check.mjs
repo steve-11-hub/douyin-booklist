@@ -118,11 +118,16 @@ if (!fs.existsSync(mobilePath)) {
   if (html.includes('>undefined<') || html.includes('>null<') || html.includes('>NaN<')) {
     bad('手机页里有 undefined / null / NaN 之类的空值');
   }
-  // 书名必须真的出现在页面上（防止渲染彻底失败只剩空壳）
+  // 书名必须真的出现在页面上（防止渲染彻底失败只剩空壳）。
+  // 注意：书名会作为 JS 字符串字面量嵌进页面脚本，中文在部分编码下会被转成
+  // \uXXXX 转义（例如《苏东坡传》→ \u82cf\u4e1c\u5761\u4f20），所以两种形态都要认。
+  const escaped = (s) => [...s].map((c) => '\\u' + c.codePointAt(0).toString(16).padStart(4, '0')).join('');
   if (manifest && Array.isArray(manifest.books)) {
     for (const b of manifest.books) {
       const name = `《${b.bookTitle}》`;
-      if (!html.includes(name)) bad(`手机页里找不到书名 ${name}，渲染可能失败`);
+      const raw = html.includes(name);
+      const esc = html.includes(escaped(name)) || html.includes(escaped(b.bookTitle));
+      if (!raw && !esc) bad(`手机页里找不到书名 ${name}，渲染可能失败`);
     }
   }
   note(`手机页 ${kb} KB`);
