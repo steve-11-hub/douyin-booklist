@@ -1,78 +1,98 @@
-# 2026-10-24 · 第 1 天 · 5 本
+# 2026-10-24 · 第 2 天 · 5 本
 
 > 仅生成草稿包，未发布。
 
-## 01 《被讨厌的勇气》
+## 01 《道德经》
 
-**发布标题**：读完《被讨厌的勇气》我才发现：所谓成熟，是敢被人讨厌
-
-**文案**：
-
-我们总以为自由是想干什么就干什么。阿德勒说：自由，是不怕被别人讨厌。读完这本书我才明白，讨好换不来尊重，边界才可以。如果你也活得小心翼翼，建议读读它。
-
-#被讨厌的勇气 #心理 #书单 #读书 #每日书单
-
-**图片**：
-- 1. D:\a\douyin-booklist\douyin-booklist\output\2026-10-24\001-被讨厌的勇气\01.png
-- 2. D:\a\douyin-booklist\douyin-booklist\output\2026-10-24\001-被讨厌的勇气\02.png
-- 3. D:\a\douyin-booklist\douyin-booklist\output\2026-10-24\001-被讨厌的勇气\03.png
-
-## 02 《人类简史》
-
-**发布标题**：读完《人类简史》我才发现：不是我们驯化了小麦，是小麦驯化了我们
+**发布标题**：读完《道德经》我才发现：越争，越得不到
 
 **文案**：
 
-我们以为是人类驯化了小麦，其实是小麦驯化了人类。农业革命让人类更辛苦，却让小麦遍布世界。这本书最狠的地方，是让你重新审视所有“理所当然”。
+读完《道德经》我才明白：不争不是躺平，是不把力气浪费在证明自己上。
 
-#人类简史 #历史 #书单 #读书 #每日书单
+上善若水，水善利万物而不争。
+
+适合想读点真东西的人。
+
+#道德经 #哲学 #书单 #读书 #每日书单
 
 **图片**：
-- 1. D:\a\douyin-booklist\douyin-booklist\output\2026-10-24\002-人类简史\01.png
-- 2. D:\a\douyin-booklist\douyin-booklist\output\2026-10-24\002-人类简史\02.png
-- 3. D:\a\douyin-booklist\douyin-booklist\output\2026-10-24\002-人类简史\03.png
+- 1. D:\a\douyin-booklist\douyin-booklist\output\2026-10-24\048-道德经\01.png
+- 2. D:\a\douyin-booklist\douyin-booklist\output\2026-10-24\048-道德经\02.png
+- 3. D:\a\douyin-booklist\douyin-booklist\output\2026-10-24\048-道德经\03.png
 
-## 03 《穷查理宝典》
+## 02 《穷爸爸富爸爸》
 
-**发布标题**：读完《穷查理宝典》我才发现：普通人最缺的，不是努力，是判断力
+**发布标题**：读完《穷爸爸富爸爸》我才发现：你在为钱工作，还是钱在为你工作
 
 **文案**：
 
-为什么很努力的人，反而赚不到钱？芒格说：反过来想，总是反过来想。想成功，先研究怎么失败；想赚钱，先研究怎么亏钱。这本书教的是判断力，不是鸡汤。
+读完《穷爸爸富爸爸》我才明白：先别急着涨工资，先搞清楚你的钱每个月流向哪里。
 
-#穷查理宝典 #思维 #书单 #读书 #每日书单
+富人买资产，穷人买负债，中产买自以为资产的负债。
+
+适合想读点真东西的人。
+
+#穷爸爸富爸爸 #商业 #书单 #读书 #每日书单
 
 **图片**：
-- 1. D:\a\douyin-booklist\douyin-booklist\output\2026-10-24\003-穷查理宝典\01.png
-- 2. D:\a\douyin-booklist\douyin-booklist\output\2026-10-24\003-穷查理宝典\02.png
-- 3. D:\a\douyin-booklist\douyin-booklist\output\2026-10-24\003-穷查理宝典\03.png
+- 1. D:\a\douyin-booklist\douyin-booklist\output\2026-10-24\057-穷爸爸富爸爸\01.png
+- 2. D:\a\douyin-booklist\douyin-booklist\output\2026-10-24\057-穷爸爸富爸爸\02.png
+- 3. D:\a\douyin-booklist\douyin-booklist\output\2026-10-24\057-穷爸爸富爸爸\03.png
 
-## 04 《局外人》
+## 03 《娱乐至死》
 
-**发布标题**：读完《局外人》我才发现：不合群不是病，假装合群才是
+**发布标题**：读完《娱乐至死》我才发现：毁掉你的，是你热爱的东西
 
 **文案**：
 
-“今天，妈妈死了。也许是在昨天，我搞不清。”一句话就让人脊背发凉。加缪写的不是冷血，而是一个人拒绝表演时，世界如何判他有罪。
+读完《娱乐至死》我才明白：当一切都能被娱乐化，严肃思考就失去了落脚的地方。
 
-#局外人 #文学 #书单 #读书 #每日书单
+我们不是被讨厌的东西毁掉，是被喜欢的东西喂傻。
+
+适合想读点真东西的人。
+
+#娱乐至死 #社会 #书单 #读书 #每日书单
 
 **图片**：
-- 1. D:\a\douyin-booklist\douyin-booklist\output\2026-10-24\004-局外人\01.png
-- 2. D:\a\douyin-booklist\douyin-booklist\output\2026-10-24\004-局外人\02.png
-- 3. D:\a\douyin-booklist\douyin-booklist\output\2026-10-24\004-局外人\03.png
+- 1. D:\a\douyin-booklist\douyin-booklist\output\2026-10-24\065-娱乐至死\01.png
+- 2. D:\a\douyin-booklist\douyin-booklist\output\2026-10-24\065-娱乐至死\02.png
+- 3. D:\a\douyin-booklist\douyin-booklist\output\2026-10-24\065-娱乐至死\03.png
 
-## 05 《置身事内》
+## 04 《时间简史》
 
-**发布标题**：读完《置身事内》我才发现：房价、税收、招商，背后是同一盘棋
+**发布标题**：读完《时间简史》我才发现：时间，真的有开始吗
 
 **文案**：
 
-房价、土地、税收、招商，看起来是四件事，其实是一盘棋。这本书把中国经济的底层逻辑讲透了，没有经济学基础也能看懂。
+读完《时间简史》我才明白：我们以为的永恒，可能只是尺度太大，看不见变化。
 
-#置身事内 #经济 #书单 #读书 #每日书单
+宇宙从一个点开始，还是一直都在？
+
+适合想读点真东西的人。
+
+#时间简史 #科学 #书单 #读书 #每日书单
 
 **图片**：
-- 1. D:\a\douyin-booklist\douyin-booklist\output\2026-10-24\005-置身事内\01.png
-- 2. D:\a\douyin-booklist\douyin-booklist\output\2026-10-24\005-置身事内\02.png
-- 3. D:\a\douyin-booklist\douyin-booklist\output\2026-10-24\005-置身事内\03.png
+- 1. D:\a\douyin-booklist\douyin-booklist\output\2026-10-24\072-时间简史\01.png
+- 2. D:\a\douyin-booklist\douyin-booklist\output\2026-10-24\072-时间简史\02.png
+- 3. D:\a\douyin-booklist\douyin-booklist\output\2026-10-24\072-时间简史\03.png
+
+## 05 《原子习惯》
+
+**发布标题**：读完《原子习惯》我才发现：每天进步1%，一年后是37倍
+
+**文案**：
+
+读完《原子习惯》我才明白：别定大目标，先设计一个每天都能做到的小动作。
+
+你不会变成你想要的样子，你会变成你每天做的样子。
+
+适合想读点真东西的人。
+
+#原子习惯 #成长 #书单 #读书 #每日书单
+
+**图片**：
+- 1. D:\a\douyin-booklist\douyin-booklist\output\2026-10-24\081-原子习惯\01.png
+- 2. D:\a\douyin-booklist\douyin-booklist\output\2026-10-24\081-原子习惯\02.png
+- 3. D:\a\douyin-booklist\douyin-booklist\output\2026-10-24\081-原子习惯\03.png

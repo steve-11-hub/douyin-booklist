@@ -1,145 +1,145 @@
 {
   "tplVersion": 3,
   "date": "2026-10-24",
-  "day": 1,
-  "generatedAt": "2026-10-24T05:54:39.462Z",
+  "day": 2,
+  "generatedAt": "2026-10-24T05:58:29.939Z",
   "count": 5,
   "status": "pending_draft",
   "note": "仅生成与打包草稿，未发布、未上传。",
   "books": [
     {
       "order": 1,
-      "id": "001",
-      "title": "《被讨厌的勇气》",
-      "bookTitle": "被讨厌的勇气",
-      "author": "岸见一郎 / 古贺史健",
-      "category": "心理",
-      "douyinTitle": "读完《被讨厌的勇气》我才发现：所谓成熟，是敢被人讨厌",
-      "douyinDesc": "我们总以为自由是想干什么就干什么。阿德勒说：自由，是不怕被别人讨厌。读完这本书我才明白，讨好换不来尊重，边界才可以。如果你也活得小心翼翼，建议读读它。\n\n#被讨厌的勇气 #心理 #书单 #读书 #每日书单",
+      "id": "048",
+      "title": "《道德经》",
+      "bookTitle": "道德经",
+      "author": "老子",
+      "category": "哲学",
+      "douyinTitle": "读完《道德经》我才发现：越争，越得不到",
+      "douyinDesc": "读完《道德经》我才明白：不争不是躺平，是不把力气浪费在证明自己上。\n\n上善若水，水善利万物而不争。\n\n适合想读点真东西的人。\n\n#道德经 #哲学 #书单 #读书 #每日书单",
       "tags": [
-        "#被讨厌的勇气",
-        "#心理",
+        "#道德经",
+        "#哲学",
         "#书单",
         "#读书",
         "#每日书单"
       ],
       "images": [
-        "D:\\a\\douyin-booklist\\douyin-booklist\\output\\2026-10-24\\001-被讨厌的勇气\\01.png",
-        "D:\\a\\douyin-booklist\\douyin-booklist\\output\\2026-10-24\\001-被讨厌的勇气\\02.png",
-        "D:\\a\\douyin-booklist\\douyin-booklist\\output\\2026-10-24\\001-被讨厌的勇气\\03.png"
+        "D:\\a\\douyin-booklist\\douyin-booklist\\output\\2026-10-24\\048-道德经\\01.png",
+        "D:\\a\\douyin-booklist\\douyin-booklist\\output\\2026-10-24\\048-道德经\\02.png",
+        "D:\\a\\douyin-booklist\\douyin-booklist\\output\\2026-10-24\\048-道德经\\03.png"
       ],
       "html": [
-        "D:\\a\\douyin-booklist\\douyin-booklist\\output\\2026-10-24\\001-被讨厌的勇气\\page01.html",
-        "D:\\a\\douyin-booklist\\douyin-booklist\\output\\2026-10-24\\001-被讨厌的勇气\\page02.html",
-        "D:\\a\\douyin-booklist\\douyin-booklist\\output\\2026-10-24\\001-被讨厌的勇气\\page03.html"
+        "D:\\a\\douyin-booklist\\douyin-booklist\\output\\2026-10-24\\048-道德经\\page01.html",
+        "D:\\a\\douyin-booklist\\douyin-booklist\\output\\2026-10-24\\048-道德经\\page02.html",
+        "D:\\a\\douyin-booklist\\douyin-booklist\\output\\2026-10-24\\048-道德经\\page03.html"
       ]
     },
     {
       "order": 2,
-      "id": "002",
-      "title": "《人类简史》",
-      "bookTitle": "人类简史",
-      "author": "尤瓦尔·赫拉利",
-      "category": "历史",
-      "douyinTitle": "读完《人类简史》我才发现：不是我们驯化了小麦，是小麦驯化了我们",
-      "douyinDesc": "我们以为是人类驯化了小麦，其实是小麦驯化了人类。农业革命让人类更辛苦，却让小麦遍布世界。这本书最狠的地方，是让你重新审视所有“理所当然”。\n\n#人类简史 #历史 #书单 #读书 #每日书单",
+      "id": "057",
+      "title": "《穷爸爸富爸爸》",
+      "bookTitle": "穷爸爸富爸爸",
+      "author": "罗伯特·清崎",
+      "category": "商业",
+      "douyinTitle": "读完《穷爸爸富爸爸》我才发现：你在为钱工作，还是钱在为你工作",
+      "douyinDesc": "读完《穷爸爸富爸爸》我才明白：先别急着涨工资，先搞清楚你的钱每个月流向哪里。\n\n富人买资产，穷人买负债，中产买自以为资产的负债。\n\n适合想读点真东西的人。\n\n#穷爸爸富爸爸 #商业 #书单 #读书 #每日书单",
       "tags": [
-        "#人类简史",
-        "#历史",
+        "#穷爸爸富爸爸",
+        "#商业",
         "#书单",
         "#读书",
         "#每日书单"
       ],
       "images": [
-        "D:\\a\\douyin-booklist\\douyin-booklist\\output\\2026-10-24\\002-人类简史\\01.png",
-        "D:\\a\\douyin-booklist\\douyin-booklist\\output\\2026-10-24\\002-人类简史\\02.png",
-        "D:\\a\\douyin-booklist\\douyin-booklist\\output\\2026-10-24\\002-人类简史\\03.png"
+        "D:\\a\\douyin-booklist\\douyin-booklist\\output\\2026-10-24\\057-穷爸爸富爸爸\\01.png",
+        "D:\\a\\douyin-booklist\\douyin-booklist\\output\\2026-10-24\\057-穷爸爸富爸爸\\02.png",
+        "D:\\a\\douyin-booklist\\douyin-booklist\\output\\2026-10-24\\057-穷爸爸富爸爸\\03.png"
       ],
       "html": [
-        "D:\\a\\douyin-booklist\\douyin-booklist\\output\\2026-10-24\\002-人类简史\\page01.html",
-        "D:\\a\\douyin-booklist\\douyin-booklist\\output\\2026-10-24\\002-人类简史\\page02.html",
-        "D:\\a\\douyin-booklist\\douyin-booklist\\output\\2026-10-24\\002-人类简史\\page03.html"
+        "D:\\a\\douyin-booklist\\douyin-booklist\\output\\2026-10-24\\057-穷爸爸富爸爸\\page01.html",
+        "D:\\a\\douyin-booklist\\douyin-booklist\\output\\2026-10-24\\057-穷爸爸富爸爸\\page02.html",
+        "D:\\a\\douyin-booklist\\douyin-booklist\\output\\2026-10-24\\057-穷爸爸富爸爸\\page03.html"
       ]
     },
     {
       "order": 3,
-      "id": "003",
-      "title": "《穷查理宝典》",
-      "bookTitle": "穷查理宝典",
-      "author": "查理·芒格",
-      "category": "思维",
-      "douyinTitle": "读完《穷查理宝典》我才发现：普通人最缺的，不是努力，是判断力",
-      "douyinDesc": "为什么很努力的人，反而赚不到钱？芒格说：反过来想，总是反过来想。想成功，先研究怎么失败；想赚钱，先研究怎么亏钱。这本书教的是判断力，不是鸡汤。\n\n#穷查理宝典 #思维 #书单 #读书 #每日书单",
+      "id": "065",
+      "title": "《娱乐至死》",
+      "bookTitle": "娱乐至死",
+      "author": "尼尔·波兹曼",
+      "category": "社会",
+      "douyinTitle": "读完《娱乐至死》我才发现：毁掉你的，是你热爱的东西",
+      "douyinDesc": "读完《娱乐至死》我才明白：当一切都能被娱乐化，严肃思考就失去了落脚的地方。\n\n我们不是被讨厌的东西毁掉，是被喜欢的东西喂傻。\n\n适合想读点真东西的人。\n\n#娱乐至死 #社会 #书单 #读书 #每日书单",
       "tags": [
-        "#穷查理宝典",
-        "#思维",
+        "#娱乐至死",
+        "#社会",
         "#书单",
         "#读书",
         "#每日书单"
       ],
       "images": [
-        "D:\\a\\douyin-booklist\\douyin-booklist\\output\\2026-10-24\\003-穷查理宝典\\01.png",
-        "D:\\a\\douyin-booklist\\douyin-booklist\\output\\2026-10-24\\003-穷查理宝典\\02.png",
-        "D:\\a\\douyin-booklist\\douyin-booklist\\output\\2026-10-24\\003-穷查理宝典\\03.png"
+        "D:\\a\\douyin-booklist\\douyin-booklist\\output\\2026-10-24\\065-娱乐至死\\01.png",
+        "D:\\a\\douyin-booklist\\douyin-booklist\\output\\2026-10-24\\065-娱乐至死\\02.png",
+        "D:\\a\\douyin-booklist\\douyin-booklist\\output\\2026-10-24\\065-娱乐至死\\03.png"
       ],
       "html": [
-        "D:\\a\\douyin-booklist\\douyin-booklist\\output\\2026-10-24\\003-穷查理宝典\\page01.html",
-        "D:\\a\\douyin-booklist\\douyin-booklist\\output\\2026-10-24\\003-穷查理宝典\\page02.html",
-        "D:\\a\\douyin-booklist\\douyin-booklist\\output\\2026-10-24\\003-穷查理宝典\\page03.html"
+        "D:\\a\\douyin-booklist\\douyin-booklist\\output\\2026-10-24\\065-娱乐至死\\page01.html",
+        "D:\\a\\douyin-booklist\\douyin-booklist\\output\\2026-10-24\\065-娱乐至死\\page02.html",
+        "D:\\a\\douyin-booklist\\douyin-booklist\\output\\2026-10-24\\065-娱乐至死\\page03.html"
       ]
     },
     {
       "order": 4,
-      "id": "004",
-      "title": "《局外人》",
-      "bookTitle": "局外人",
-      "author": "阿尔贝·加缪",
-      "category": "文学",
-      "douyinTitle": "读完《局外人》我才发现：不合群不是病，假装合群才是",
-      "douyinDesc": "“今天，妈妈死了。也许是在昨天，我搞不清。”一句话就让人脊背发凉。加缪写的不是冷血，而是一个人拒绝表演时，世界如何判他有罪。\n\n#局外人 #文学 #书单 #读书 #每日书单",
+      "id": "072",
+      "title": "《时间简史》",
+      "bookTitle": "时间简史",
+      "author": "斯蒂芬·霍金",
+      "category": "科学",
+      "douyinTitle": "读完《时间简史》我才发现：时间，真的有开始吗",
+      "douyinDesc": "读完《时间简史》我才明白：我们以为的永恒，可能只是尺度太大，看不见变化。\n\n宇宙从一个点开始，还是一直都在？\n\n适合想读点真东西的人。\n\n#时间简史 #科学 #书单 #读书 #每日书单",
       "tags": [
-        "#局外人",
-        "#文学",
+        "#时间简史",
+        "#科学",
         "#书单",
         "#读书",
         "#每日书单"
       ],
       "images": [
-        "D:\\a\\douyin-booklist\\douyin-booklist\\output\\2026-10-24\\004-局外人\\01.png",
-        "D:\\a\\douyin-booklist\\douyin-booklist\\output\\2026-10-24\\004-局外人\\02.png",
-        "D:\\a\\douyin-booklist\\douyin-booklist\\output\\2026-10-24\\004-局外人\\03.png"
+        "D:\\a\\douyin-booklist\\douyin-booklist\\output\\2026-10-24\\072-时间简史\\01.png",
+        "D:\\a\\douyin-booklist\\douyin-booklist\\output\\2026-10-24\\072-时间简史\\02.png",
+        "D:\\a\\douyin-booklist\\douyin-booklist\\output\\2026-10-24\\072-时间简史\\03.png"
       ],
       "html": [
-        "D:\\a\\douyin-booklist\\douyin-booklist\\output\\2026-10-24\\004-局外人\\page01.html",
-        "D:\\a\\douyin-booklist\\douyin-booklist\\output\\2026-10-24\\004-局外人\\page02.html",
-        "D:\\a\\douyin-booklist\\douyin-booklist\\output\\2026-10-24\\004-局外人\\page03.html"
+        "D:\\a\\douyin-booklist\\douyin-booklist\\output\\2026-10-24\\072-时间简史\\page01.html",
+        "D:\\a\\douyin-booklist\\douyin-booklist\\output\\2026-10-24\\072-时间简史\\page02.html",
+        "D:\\a\\douyin-booklist\\douyin-booklist\\output\\2026-10-24\\072-时间简史\\page03.html"
       ]
     },
     {
       "order": 5,
-      "id": "005",
-      "title": "《置身事内》",
-      "bookTitle": "置身事内",
-      "author": "兰小欢",
-      "category": "经济",
-      "douyinTitle": "读完《置身事内》我才发现：房价、税收、招商，背后是同一盘棋",
-      "douyinDesc": "房价、土地、税收、招商，看起来是四件事，其实是一盘棋。这本书把中国经济的底层逻辑讲透了，没有经济学基础也能看懂。\n\n#置身事内 #经济 #书单 #读书 #每日书单",
+      "id": "081",
+      "title": "《原子习惯》",
+      "bookTitle": "原子习惯",
+      "author": "詹姆斯·克利尔",
+      "category": "成长",
+      "douyinTitle": "读完《原子习惯》我才发现：每天进步1%，一年后是37倍",
+      "douyinDesc": "读完《原子习惯》我才明白：别定大目标，先设计一个每天都能做到的小动作。\n\n你不会变成你想要的样子，你会变成你每天做的样子。\n\n适合想读点真东西的人。\n\n#原子习惯 #成长 #书单 #读书 #每日书单",
       "tags": [
-        "#置身事内",
-        "#经济",
+        "#原子习惯",
+        "#成长",
         "#书单",
         "#读书",
         "#每日书单"
       ],
       "images": [
-        "D:\\a\\douyin-booklist\\douyin-booklist\\output\\2026-10-24\\005-置身事内\\01.png",
-        "D:\\a\\douyin-booklist\\douyin-booklist\\output\\2026-10-24\\005-置身事内\\02.png",
-        "D:\\a\\douyin-booklist\\douyin-booklist\\output\\2026-10-24\\005-置身事内\\03.png"
+        "D:\\a\\douyin-booklist\\douyin-booklist\\output\\2026-10-24\\081-原子习惯\\01.png",
+        "D:\\a\\douyin-booklist\\douyin-booklist\\output\\2026-10-24\\081-原子习惯\\02.png",
+        "D:\\a\\douyin-booklist\\douyin-booklist\\output\\2026-10-24\\081-原子习惯\\03.png"
       ],
       "html": [
-        "D:\\a\\douyin-booklist\\douyin-booklist\\output\\2026-10-24\\005-置身事内\\page01.html",
-        "D:\\a\\douyin-booklist\\douyin-booklist\\output\\2026-10-24\\005-置身事内\\page02.html",
-        "D:\\a\\douyin-booklist\\douyin-booklist\\output\\2026-10-24\\005-置身事内\\page03.html"
+        "D:\\a\\douyin-booklist\\douyin-booklist\\output\\2026-10-24\\081-原子习惯\\page01.html",
+        "D:\\a\\douyin-booklist\\douyin-booklist\\output\\2026-10-24\\081-原子习惯\\page02.html",
+        "D:\\a\\douyin-booklist\\douyin-booklist\\output\\2026-10-24\\081-原子习惯\\page03.html"
       ]
     }
   ]
