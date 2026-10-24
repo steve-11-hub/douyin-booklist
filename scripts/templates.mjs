@@ -217,26 +217,112 @@ export function quoteHTML(book, ctx) {
   return shell(`${book.t} · 金句`, css, body, 'quote');
 }
 
-/* --------------------------------- 引导页 --------------------------------- */
-export function ctaHTML(book, ctx) {
+/* ------------------------------- 精华提炼页 ------------------------------- */
+/**
+ * 第三张：把一本书压成「三句话精华」。
+ *   1) 书里原话 / 书里观点
+ *   2) 说人话（白话）
+ *   3) 读完能用上（由痛点衍生的行动句）
+ * 三句来自不同字段，互不重复；也不与第 1 张封面、第 2 张干货页撞车。
+ * 用户可在书库里写 ess: [{k,j,e}...] 完全自定义。
+ */
+/**
+ * 第 3 句「读完能做」：只放一条可执行动作，不再复述场景。
+ * 有 act 用 act；没有就从适合人群兜底。
+ */
+function takeawayLine(book) {
+  const action =
+    book.act ||
+    (book.fit
+      ? `下次再为这事犯难，先问一句：这是我想要的，还是别人期待的？`
+      : '把读到的这句话写下来，明天找一个具体的机会用一次。');
+  return {
+    j: action,
+    e: book.use ? `什么时候用：${book.use}` : '',
+  };
+}
+
+/** 从金句/白话里提炼一个可执行动作（兜底） */
+function deriveAction(book) {
+  const src = `${book.e || ''}${book.q || ''}`;
+  if (/先/.test(src)) return src.slice(0, 34);
+  return '先把它写下来，明天找一个具体的机会用一次。';
+}
+
+function essenceOf(book) {
+  // 用户手写了三句话优先
+  if (Array.isArray(book.ess) && book.ess.length) {
+    return book.ess.slice(0, 3).map((x, i) => ({
+      k: x.k || ['书里原话', '说人话', '读完能用上'][i],
+      j: x.j,
+      e: x.e || '',
+    }));
+  }
+  // 固定三件事，内容互补、不重复封面和干货页：
+  //   1) 书里原话   2) 说人话   3) 读完能用上（由金句 + 场景衍生出的行动句）
+  const tl = takeawayLine(book);
+  return [
+    { k: book.qt === '原文' ? '书里原话' : '书里观点', j: book.q, e: '' },
+    { k: '说人话', j: book.e, e: '' },
+    { k: '读完能做', j: tl.j, e: tl.e },
+  ].filter((x) => x.j);
+}
+
+/** 补齐到 3 条，并去掉重复句（不同字段偶尔会撞车） */
+function essence3(book) {
+  const raw = essenceOf(book);
+  const seen = new Set();
+  const list = [];
+  const norm = (s) => String(s).replace(/[，。！？、,.!?\s「」“”：:]/g, '');
+  for (const x of raw) {
+    const key = norm(x.j);
+    if (!key || seen.has(key)) continue;
+    seen.add(key);
+    list.push(x);
+  }
+  if (list.length < 3 && book.fit && !seen.has(norm(`写给${book.fit}`))) {
+    list.push({ k: '写给谁', j: `写给${book.fit}`, e: '' });
+  }
+  return list.slice(0, 3);
+}
+
+export function essenceHTML(book, ctx) {
+  const list = essence3(book);
+  const lens = list.map((x) => [...x.j].length);
+  const jSize = Math.max(34, Math.min(50, Math.floor(900 / Math.max(...lens, 1))));
+  const hn = ['零基础', '必看'];
+
+  const rows = list
+    .map(
+      (x, i) => `
+    <li class="er" style="flex:${i === 0 ? 1.15 : 1}">
+      <span class="en mono">0${i + 1}</span>
+      <div class="eb">
+        <div class="ek">${esc(x.k)}</div>
+        <div class="ej serif" style="font-size:${jSize}px">${typo(x.j)}</div>
+        ${x.e ? `<div class="ee">${typo(x.e)}</div>` : ''}
+      </div>
+    </li>`
+    )
+    .join('');
+
   const body = `
   <div class="ghost3 mono">03</div>
   <div class="p3top">
-    <div class="p3no mono"><b>03</b><span>入 门 指 南</span></div>
-    <div class="p3issue">第 ${String(ctx.day).padStart(2, '0')} 期</div>
+    <div class="p3no mono"><b>03</b><span>精 华 提 炼</span></div>
+    <div class="p3issue">《${esc(book.t)}》</div>
   </div>
-  <div class="p3kicker"><i></i>写 给 第 一 次 读 它 的 你</div>
-  <h2 class="serif">零基础<br><span>必看</span></h2>
-  <p class="p3sub">不啃原著，3 张图读懂一本好书。<br>今天这本，叫《${esc(book.t)}》。</p>
 
-  <a class="cta">
-    <span class="cta-t">同款书单 · 主页合集</span>
-    <span class="cta-a">→</span>
-  </a>
-  <div class="p3path">主页 <span>›</span> 合集 <span>›</span> 「每日书单」</div>
+  <div class="p3kicker"><i></i>3 张图读懂，记住这 ${list.length} 句就够</div>
+  <h2 class="serif">${esc(hn[0])}<br><span>${esc(hn[1])}</span></h2>
+
+  <ol class="elist">${rows}</ol>
+
+  <div class="p3line"></div>
+  <div class="p3path">作者 <b>${typo(book.a)}</b><span>·</span>每日 08:00 更新</div>
 
   <div class="p3foot">
-    <div class="p3f-l"><i></i>每 日 08:00 · 五 本 好 书</div>
+    <div class="p3f-l"><i></i>每 日 书 单 · 只 读 好 书</div>
     <div class="dots"><b></b><b></b><b></b></div>
   </div>`;
 
@@ -247,22 +333,29 @@ export function ctaHTML(book, ctx) {
   .p3no{display:flex;align-items:baseline;gap:16px}
   .p3no b{font-size:26px;font-style:italic;font-weight:400;color:#fff}
   .p3no span{font-size:13px;letter-spacing:.34em;color:#8C877C}
-  .p3issue{font-size:13px;letter-spacing:.2em;color:#8C877C}
-  .p3kicker{position:relative;z-index:2;display:flex;align-items:center;gap:12px;margin-top:110px;
-            font-size:14px;letter-spacing:.3em;color:#A9A292}
+  .p3issue{font-size:15px;letter-spacing:.1em;color:#8C877C}
+  .p3kicker{position:relative;z-index:2;display:flex;align-items:center;gap:12px;margin-top:52px;
+            font-size:14px;letter-spacing:.26em;color:#A9A292}
   .p3kicker i{width:9px;height:9px;background:#D8382B;display:block}
-  h2{position:relative;z-index:2;margin-top:36px;font-size:196px;line-height:1.02;
+  h2{position:relative;z-index:2;margin-top:20px;font-size:112px;line-height:1.02;
      letter-spacing:-.03em;font-weight:900}
   h2 span{color:#fff}
-  .p3sub{position:relative;z-index:2;margin-top:44px;font-size:29px;line-height:1.85;color:#BDB7A9;
-         letter-spacing:.02em}
-  .cta{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;
-       width:660px;height:112px;margin-top:64px;background:#fff;color:#0B0B0B;border-radius:999px;
-       padding:0 38px 0 44px;text-decoration:none}
-  .cta-t{font-size:31px;font-weight:700;letter-spacing:.04em}
-  .cta-a{font-size:38px;font-weight:300;line-height:1}
-  .p3path{position:relative;z-index:2;margin-top:24px;font-size:15px;letter-spacing:.2em;color:#726D62}
+
+  .elist{position:relative;z-index:2;list-style:none;margin:34px 0 0;padding:0;
+         display:flex;flex-direction:column;min-height:600px}
+  .er{display:flex;gap:20px;padding:26px 0;border-top:1px solid #2A2A2A;align-items:flex-start}
+  .er:last-child{border-bottom:1px solid #2A2A2A}
+  .en{flex:none;width:34px;font-size:15px;font-style:italic;color:#C0392B;padding-top:6px}
+  .eb{min-width:0}
+  .ek{font-size:12px;letter-spacing:.3em;color:#8C877C;margin-bottom:10px}
+  .ej{line-height:1.42;letter-spacing:-.01em;color:#fff}
+  .ee{margin-top:10px;font-size:19px;line-height:1.7;color:#BDB7A9;letter-spacing:.01em}
+
+  .p3line{position:relative;z-index:2;height:1px;background:#242424;margin-top:30px}
+  .p3path{position:relative;z-index:2;margin-top:18px;font-size:14px;letter-spacing:.12em;color:#726D62}
+  .p3path b{color:#BDB7A9;font-weight:400}
   .p3path span{margin:0 10px;color:#4A463D}
+
   .p3foot{position:absolute;left:72px;right:72px;bottom:54px;display:flex;justify-content:space-between;
           align-items:center;z-index:2}
   .p3f-l{display:flex;align-items:center;gap:12px;font-size:13px;letter-spacing:.22em;color:#8C877C}
@@ -270,11 +363,11 @@ export function ctaHTML(book, ctx) {
   .dots{display:flex;gap:9px}
   .dots b{width:7px;height:7px;border-radius:50%;background:#3A3A3A;display:block}
   .dots b:first-child{background:#fff}
-  .ghost3{position:absolute;right:-30px;bottom:-150px;font-size:540px;line-height:1;font-style:italic;
-          color:transparent;-webkit-text-stroke:1px #262626;z-index:0;letter-spacing:-.05em}
+  .ghost3{position:absolute;right:-30px;bottom:-120px;font-size:460px;line-height:1;font-style:italic;
+          color:transparent;-webkit-text-stroke:1px #242424;z-index:0;letter-spacing:-.05em}
   `;
 
-  return shell(`${book.t} · 引导`, css, body, 'cta-page');
+  return shell(`${book.t} · 精华`, css, body, 'cta-page');
 }
 
 export function pageURL(p) {
