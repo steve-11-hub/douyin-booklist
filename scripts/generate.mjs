@@ -8,7 +8,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { spawn } from 'node:child_process';
-import { coverHTML, quoteHTML, ctaHTML } from './templates.mjs';
+import { coverHTML, quoteHTML, essenceHTML } from './templates.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
@@ -89,38 +89,68 @@ function pngSize(file) {
 }
 
 /* ------------------------------ 选书引擎 ------------------------------ */
+/**
+ * 四层优先级：
+ *   1) 从没用过的书（按类别轮转，保证每天类别不重复）
+ *   2) 用过的书里最久没出现的（时间最旧优先）
+ *   3) 类别池不够时，从其它类别补未用过的
+ *   4) 还凑不齐，才用全库里最久没出现的
+ * 结果：100 本用完后自动回到第 1 本，循环播放，不会空档。
+ */
 function pickBooks(lib, state, count) {
   const cats = lib.meta.categoryOrder || [...new Set(lib.books.map((b) => b.c))];
   const used = state.lastUsed || {};
   const picks = [];
   const picked = new Set();
-  const start = ((state.dayIndex || 0) * count) % cats.length;
 
-  for (let i = 0; i < count; i++) {
+  const neverUsed = (b) => !used[b.id];
+  const oldestFirst = (a, b) =>
+    String(used[a.id] || '0000-00-00').localeCompare(String(used[b.id] || '0000-00-00'));
+
+  // 全新一轮的起点：每轮从不同类别开始，避免每次循环都是同一个顺序
+  const cycle = Math.floor((state.dayIndex || 0) / Math.max(1, Math.ceil(lib.books.length / count)));
+  const start = ((state.dayIndex || 0) * count + cycle) % cats.length;
+
+  const take = (b) => {
+    if (!b || picked.has(b.id) || picks.length >= count) return false;
+    picks.push(b);
+    picked.add(b.id);
+    return true;
+  };
+
+  // 1) 按类别取未用过的
+  for (let i = 0; i < cats.length && picks.length < count; i++) {
     const cat = cats[(start + i) % cats.length];
-    const pool = lib.books.filter((b) => b.c === cat);
+    const pool = lib.books.filter((b) => b.c === cat && !picked.has(b.id));
     if (!pool.length) continue;
-    let cand = pool.find((b) => !used[b.id] && !picked.has(b.id));
-    if (!cand) {
-      // 该类目已轮完：取最早用过的
-      cand = [...pool].sort((a, b) => String(used[a.id] || '').localeCompare(String(used[b.id] || '')))[0];
-    }
-    if (cand && !picked.has(cand.id)) {
-      picks.push(cand);
-      picked.add(cand.id);
-    }
+    take(pool.find(neverUsed) || [...pool].sort(oldestFirst)[0]);
   }
-  // 类目不足时，用未使用的书补齐
+
+  // 2) 全库里没用过的补齐（类别不重复优先）
   if (picks.length < count) {
     for (const b of lib.books) {
       if (picks.length >= count) break;
-      if (!picked.has(b.id) && !used[b.id]) {
-        picks.push(b);
-        picked.add(b.id);
-      }
+      take(neverUsed(b) ? b : null);
     }
   }
+
+  // 3) 全部用过：取最久没出现的
+  if (picks.length < count) {
+    for (const b of [...lib.books].sort(oldestFirst)) {
+      if (picks.length >= count) break;
+      take(b);
+    }
+  }
+
   return picks;
+}
+
+/** 统计这轮进度，方便在页面上显示 */
+function rotationInfo(lib, state) {
+  const used = state.lastUsed || {};
+  const total = lib.books.length;
+  const done = lib.books.filter((b) => used[b.id]).length;
+  return { total, used: done, left: total - done };
 }
 
 /* ------------------------------ 文案拼装 ------------------------------ */
@@ -243,7 +273,7 @@ async function main() {
     const pages = [
       { html: coverHTML(b, ctxBase), name: '01' },
       { html: quoteHTML(b, ctxBase), name: '02' },
-      { html: ctaHTML(b, ctxBase), name: '03' },
+      { html: essenceHTML(b, ctxBase), name: '03' },
     ];
     for (const p of pages) {
       fs.writeFileSync(path.join(dir, `page${p.name}.html`), p.html, 'utf8');
