@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8"><title>原子习惯 · 精华</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{width:1080px;height:1440px;overflow:hidden}
+  body{
+    background:#fff;color:#0C0B09;
+    font-family:"Noto Sans SC","Microsoft YaHei",sans-serif;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:geometricPrecision;
+  }
+  .serif{font-family:"Source Han Serif SC Heavy","Source Han Serif SC","Noto Serif SC",serif;font-weight:900}
+  .mono{font-family:Georgia,"Times New Roman",serif}
+  .page{position:relative;width:1080px;height:1440px;overflow:hidden}
+  .tick{position:absolute;width:14px;height:14px;z-index:5}
+  .tick:before,.tick:after{content:"";position:absolute;background:#CFC9BA}
+  .tick:before{width:14px;height:1px;top:6px;left:0}
+  .tick:after{width:1px;height:14px;left:6px;top:0}
+  .tick.tl{left:26px;top:26px}.tick.tr{right:26px;top:26px}
+  .tick.bl{left:26px;bottom:26px}.tick.br{right:26px;bottom:26px}
+
+  .cta-page{background:#0B0B0B;color:#fff;padding:0 72px}
+  .p3top{display:flex;justify-content:space-between;align-items:baseline;padding-top:58px;
+         position:relative;z-index:2}
+  .p3no{display:flex;align-items:baseline;gap:16px}
+  .p3no b{font-size:26px;font-style:italic;font-weight:400;color:#fff}
+  .p3no span{font-size:13px;letter-spacing:.34em;color:#8C877C}
+  .p3issue{font-size:15px;letter-spacing:.1em;color:#8C877C}
+  .p3kicker{position:relative;z-index:2;display:flex;align-items:center;gap:12px;margin-top:52px;
+            font-size:14px;letter-spacing:.26em;color:#A9A292}
+  .p3kicker i{width:9px;height:9px;background:#D8382B;display:block}
+  h2{position:relative;z-index:2;margin-top:20px;font-size:112px;line-height:1.02;
+     letter-spacing:-.03em;font-weight:900}
+  h2 span{color:#fff}
+
+  .elist{position:relative;z-index:2;list-style:none;margin:34px 0 0;padding:0;
+         display:flex;flex-direction:column;min-height:600px}
+  .er{display:flex;gap:20px;padding:26px 0;border-top:1px solid #2A2A2A;align-items:flex-start}
+  .er:last-child{border-bottom:1px solid #2A2A2A}
+  .en{flex:none;width:34px;font-size:15px;font-style:italic;color:#C0392B;padding-top:6px}
+  .eb{min-width:0}
+  .ek{font-size:12px;letter-spacing:.3em;color:#8C877C;margin-bottom:10px}
+  .ej{line-height:1.42;letter-spacing:-.01em;color:#fff}
+  .ee{margin-top:10px;font-size:19px;line-height:1.7;color:#BDB7A9;letter-spacing:.01em}
+
+  .p3line{position:relative;z-index:2;height:1px;background:#242424;margin-top:30px}
+  .p3path{position:relative;z-index:2;margin-top:18px;font-size:14px;letter-spacing:.12em;color:#726D62}
+  .p3path b{color:#BDB7A9;font-weight:400}
+  .p3path span{margin:0 10px;color:#4A463D}
+
+  .p3foot{position:absolute;left:72px;right:72px;bottom:54px;display:flex;justify-content:space-between;
+          align-items:center;z-index:2}
+  .p3f-l{display:flex;align-items:center;gap:12px;font-size:13px;letter-spacing:.22em;color:#8C877C}
+  .p3f-l i{width:6px;height:6px;border-radius:50%;background:#D8382B}
+  .dots{display:flex;gap:9px}
+  .dots b{width:7px;height:7px;border-radius:50%;background:#3A3A3A;display:block}
+  .dots b:first-child{background:#fff}
+  .ghost3{position:absolute;right:-30px;bottom:-120px;font-size:460px;line-height:1;font-style:italic;
+          color:transparent;-webkit-text-stroke:1px #242424;z-index:0;letter-spacing:-.05em}
+  </style></head>
+<body><main class="page cta-page">
+  <div class="ghost3 mono">03</div>
+  <div class="p3top">
+    <div class="p3no mono"><b>03</b><span>精 华 提 炼</span></div>
+    <div class="p3issue">《原子习惯》</div>
+  </div>
+
+  <div class="p3kicker"><i></i>3 张图读懂，记住这 3 句就够</div>
+  <h2 class="serif">零基础<br><span>必看</span></h2>
+
+  <ol class="elist">
+    <li class="er" style="flex:1.15">
+      <span class="en mono">01</span>
+      <div class="eb">
+        <div class="ek">书里原话</div>
+        <div class="ej serif" style="font-size:40px">每天进步百分之一，一年后你将强大三十七倍。</div>
+        
+      </div>
+    </li>
+    <li class="er" style="flex:1">
+      <span class="en mono">02</span>
+      <div class="eb">
+        <div class="ek">说人话</div>
+        <div class="ej serif" style="font-size:40px">别定大目标，先设计一个每天都能做到的小动作。</div>
+        
+      </div>
+    </li>
+    <li class="er" style="flex:1">
+      <span class="en mono">03</span>
+      <div class="eb">
+        <div class="ek">读完能做</div>
+        <div class="ej serif" style="font-size:40px">设计一个两分钟内能完成的小习惯，先做两周。</div>
+        <div class="ee">什么时候用：你又在立一个大目标</div>
+      </div>
+    </li></ol>
+
+  <div class="p3line"></div>
+  <div class="p3path">作者 <b>詹姆斯⁠·⁠克利尔</b><span>·</span>每日 08:00 更新</div>
+
+  <div class="p3foot">
+    <div class="p3f-l"><i></i>每 日 书 单 · 只 读 好 书</div>
+    <div class="dots"><b></b><b></b><b></b></div>
+  </div></main></body></html>
