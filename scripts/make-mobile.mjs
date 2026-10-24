@@ -242,7 +242,8 @@ DATA.items.forEach((it)=>{
     \${it.video
       ? \`<div class="wrap"><video class="video" controls playsinline preload="none"
           poster="\${it.poster}" src="\${videoSrc(it)}"></video></div>\`
-      : \`<div class="wrap"><img class="cover" src="\${it.cover}" alt="《\${it.title}》封面"></div>\`}    <div class="ctrl">
+      : \`<div class="wrap"><img class="cover" src="\${it.cover}" alt="《\${it.title}》封面"></div>\`}
+    <div class="ctrl">
       <button class="ghost" data-label="复制标题">复制标题</button>
       <button data-label="复制文案">复制文案</button>
     </div>
