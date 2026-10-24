@@ -202,7 +202,7 @@ textarea.d{height:120px}
 <div class="hd">
   <h1>${esc(date)} · 每日书单<small>第 ${manifest.day} 天 · ${manifest.books.length} 本 · 每天更新</small></h1>
 </div>
-<div class="hint">点视频在线看；点「复制标题 / 复制文案」→ 去抖音图文或视频发布页粘贴。全程不要点「发布」，存档即可。</div>
+<div class="hint">点「复制标题 / 复制文案」→ 去抖音图文发布页粘贴；图片按 01 封面 → 02 金句 → 03 引导 顺序上传。全程不要点「发布」，存草稿即可。</div>
 <div id="list"></div>
 <div class="ft">每日书单 · 只读好书</div>
 <div class="toast" id="toast">已复制</div>
@@ -242,8 +242,7 @@ DATA.items.forEach((it)=>{
     \${it.video
       ? \`<div class="wrap"><video class="video" controls playsinline preload="none"
           poster="\${it.poster}" src="\${videoSrc(it)}"></video></div>\`
-      : \`<div class="wrap"><img class="cover" src="\${it.cover}" alt="《\${it.title}》封面"></div>\`}
-    <div class="ctrl">
+      : \`<div class="wrap"><img class="cover" src="\${it.cover}" alt="《\${it.title}》封面"></div>\`}    <div class="ctrl">
       <button class="ghost" data-label="复制标题">复制标题</button>
       <button data-label="复制文案">复制文案</button>
     </div>
