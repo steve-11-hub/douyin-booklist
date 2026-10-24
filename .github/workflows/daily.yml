@@ -31,6 +31,12 @@ jobs:
         shell: pwsh
         run: node scripts/generate.mjs --count 5 --force
 
+      # 每天自动体检：书库条数、已用进度、产物是否齐全。
+      # 出问题会让本次运行失败并触发通知，而不是悄悄出一张空页面。
+      - name: 运行体检
+        shell: pwsh
+        run: node scripts/health-check.mjs
+
       - name: 生成手机版页面
         shell: pwsh
         run: node scripts/make-mobile.mjs
@@ -41,19 +47,22 @@ jobs:
           $date = Get-Date -Format 'yyyy-MM-dd'
           New-Item -ItemType Directory -Force -Path site | Out-Null
           Copy-Item "output/$date/mobile/*" -Destination site -Recurse -Force
-          # 历史归档：把每天的页面也带上，旧链接不会断
-          if (Test-Path "output/$date") {
-            Copy-Item "output/$date" -Destination "site/$date" -Recurse -Force -ErrorAction SilentlyContinue
-          }
+          # 只发布「当天」的页面：站点体积恒定，永远不会撞 Pages 的 1 GB 上限。
+          # 需要翻旧内容就 git checkout 历史版本，或看 output/<日期>/。
           Write-Host "site 内容："
           Get-ChildItem site | Select-Object -First 12 Name
+          $mb = [math]::Round(((Get-ChildItem site -Recurse -File | Measure-Object Length -Sum).Sum/1MB),1)
+          Write-Host "site 体积: $mb MB"
 
-      - name: 提交产物（保留轮转进度）
+      # 长期运行的关键：仓库只记「进度」，不囤「产物」。
+      # 曾经 git add output，每天 +6~16 MB，一年 2 GB+，迟早撞 1 GB 软上限并拖慢 clone。
+      - name: 提交轮转进度
         shell: pwsh
         run: |
           git config user.name "booklist-bot"
           git config user.email "booklist-bot@users.noreply.github.com"
-          git add data/state.json output
+          # 产物不入库，只保留轮转进度（state.json）
+          git add data/state.json
           $changed = git status --porcelain
           if ($changed) {
             git commit -m "chore: 每日书单 $(Get-Date -Format 'yyyy-MM-dd')"
@@ -77,3 +86,41 @@ jobs:
       - name: 部署到 Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  # 长期运行的第二道保险：跑失败时开一个 Issue。
+  # GitHub 的失败邮件通知默认是关的，不开这一步，挂了也没人知道。
+  alert:
+    needs: [build]
+    if: failure()
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: 开失败通知 Issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const date = new Date().toISOString().slice(0, 10);
+            const title = `每日书单运行失败 ${date}`;
+            const { data: open } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner, repo: context.repo.repo,
+              state: 'open', per_page: 50,
+            });
+            const body = [
+              `**${date} 的每日书单没有生成成功。**`,
+              '',
+              `- 运行记录：${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
+              `- 定时任务在北京时间 08:00 触发`,
+              '',
+              '当天链接会停留在前一天的内容。修好后在 Actions 页面点 **Run workflow** 手动补跑即可。',
+            ].join('\n');
+            const exist = open.find(i => i.title.startsWith('每日书单运行失败'));
+            if (exist) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner, repo: context.repo.repo, issue_number: exist.number, body,
+              });
+            } else {
+              await github.rest.issues.create({
+                owner: context.repo.owner, repo: context.repo.repo, title, body,
+              });
+            }
