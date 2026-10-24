@@ -45,6 +45,9 @@ function findBrowser() {
 const EDGE = findBrowser();
 
 /* ------------------------------- 小工具 ------------------------------- */
+// 模板版本号：改了 templates.mjs 就 +1，云端会自动重出当天的图
+const TEMPLATE_VERSION = 3;
+
 const pad = (n) => String(n).padStart(2, '0');
 const nowLocal = () => {
   const d = new Date();
@@ -234,8 +237,12 @@ async function main() {
   const manifestPath = path.join(dateDir, 'manifest.json');
   if (fs.existsSync(manifestPath) && !args.force) {
     const old = readJSON(manifestPath);
-    log(`⏭  ${args.date} 已生成过（${old.books?.length || 0} 本），跳过。需要重做请加 --force`);
-    return;
+    // 只有当产物和当前模板一致时才跳过；换了模板就必须重出
+    if (old.tplVersion === TEMPLATE_VERSION) {
+      log(`⏭  ${args.date} 已生成过（${old.books?.length || 0} 本，模板 v${TEMPLATE_VERSION}），跳过。需要重做请加 --force`);
+      return;
+    }
+    log(`♻️  检测到模板已更新（v${old.tplVersion || 0} → v${TEMPLATE_VERSION}），重新生成`);
   }
 
   const picks = pickBooks(lib, state, args.count);
@@ -255,6 +262,7 @@ async function main() {
   };
 
   const manifest = {
+    tplVersion: TEMPLATE_VERSION,
     date: args.date,
     day,
     generatedAt: new Date().toISOString(),
