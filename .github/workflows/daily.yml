@@ -31,15 +31,16 @@ jobs:
         shell: pwsh
         run: node scripts/generate.mjs --count 5 --force
 
-      # 每天自动体检：书库条数、已用进度、产物是否齐全。
-      # 出问题会让本次运行失败并触发通知，而不是悄悄出一张空页面。
-      - name: 运行体检
-        shell: pwsh
-        run: node scripts/health-check.mjs
-
       - name: 生成手机版页面
         shell: pwsh
         run: node scripts/make-mobile.mjs
+
+      # 每天自动体检：必须放在「生成图片 + 生成页面」之后，
+      # 否则会去读上一次残留的旧页面，误判当天内容没渲染。
+      # 书库条数、轮转进度、产物齐全、页面可读，任何一项不过就失败并告警。
+      - name: 运行体检
+        shell: pwsh
+        run: node scripts/health-check.mjs
 
       - name: 整理发布目录
         shell: pwsh
