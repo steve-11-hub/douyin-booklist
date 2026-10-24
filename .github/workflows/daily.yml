@@ -1,0 +1,79 @@
+name: 每日书单
+
+on:
+  schedule:
+    # GitHub 的 cron 是 UTC：00:00 UTC = 北京时间 08:00
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: daily-booklist
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: 检出
+        uses: actions/checkout@v4
+
+      - name: 安装 Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: 生成今天的 5 本 × 3 张卡片
+        shell: pwsh
+        run: node scripts/generate.mjs --count 5
+
+      - name: 生成手机版页面
+        shell: pwsh
+        run: node scripts/make-mobile.mjs
+
+      - name: 整理发布目录
+        shell: pwsh
+        run: |
+          $date = Get-Date -Format 'yyyy-MM-dd'
+          New-Item -ItemType Directory -Force -Path site | Out-Null
+          Copy-Item "output/$date/mobile/*" -Destination site -Recurse -Force
+          # 历史归档：把每天的页面也带上，旧链接不会断
+          if (Test-Path "output/$date") {
+            Copy-Item "output/$date" -Destination "site/$date" -Recurse -Force -ErrorAction SilentlyContinue
+          }
+          Write-Host "site 内容："
+          Get-ChildItem site | Select-Object -First 12 Name
+
+      - name: 提交产物（保留轮转进度）
+        shell: pwsh
+        run: |
+          git config user.name "booklist-bot"
+          git config user.email "booklist-bot@users.noreply.github.com"
+          git add data/state.json output
+          $changed = git status --porcelain
+          if ($changed) {
+            git commit -m "chore: 每日书单 $(Get-Date -Format 'yyyy-MM-dd')"
+            git push
+          } else {
+            Write-Host "没有变化，跳过提交"
+          }
+
+      - name: 上传 Pages 产物
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: 部署到 Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

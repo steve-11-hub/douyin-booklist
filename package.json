@@ -1,0 +1,11 @@
+{
+  "name": "douyin-booklist",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "每日书单：100 本书库，每天生成 5 本 × 3 张 1080×1440 图文卡片",
+  "scripts": {
+    "daily": "node scripts/generate.mjs --count 5 && node scripts/make-mobile.mjs",
+    "validate": "node scripts/validate.mjs"
+  }
+}
