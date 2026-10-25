@@ -65,12 +65,27 @@ jobs:
           # 产物不入库，只保留轮转进度（state.json）
           git add data/state.json
           $changed = git status --porcelain
-          if ($changed) {
-            git commit -m "chore: 每日书单 $(Get-Date -Format 'yyyy-MM-dd')"
-            git push
-          } else {
+          if (-not $changed) {
             Write-Host "没有变化，跳过提交"
+            exit 0
           }
+          git commit -m "chore: 每日书单 $(Get-Date -Format 'yyyy-MM-dd')"
+          # 远端可能在此期间被别的提交推进（例如手动推送），直接 push 会 non-fast-forward。
+          # 先 rebase 到最新，最多重试 3 次。
+          for ($i = 1; $i -le 3; $i++) {
+            git pull --rebase --autostash origin main
+            if ($LASTEXITCODE -eq 0) {
+              git push
+              if ($LASTEXITCODE -eq 0) {
+                Write-Host "✓ 已提交轮转进度"
+                exit 0
+              }
+            }
+            Write-Host "第 $i 次推送失败，等待后重试…"
+            Start-Sleep -Seconds (3 * $i)
+          }
+          Write-Host "::error::轮转进度推送失败（state.json 未保存，明天的选书可能重复）"
+          exit 1
 
       - name: 上传 Pages 产物
         uses: actions/upload-pages-artifact@v3
