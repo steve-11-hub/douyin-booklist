@@ -46,7 +46,7 @@ const EDGE = findBrowser();
 
 /* ------------------------------- 小工具 ------------------------------- */
 // 模板版本号：改了 templates.mjs 就 +1，云端会自动重出当天的图
-const TEMPLATE_VERSION = 3;
+const TEMPLATE_VERSION = 4; // v4: NO.xxx/N 跟随书库总数，不再写死 100
 
 const pad = (n) => String(n).padStart(2, '0');
 const nowLocal = () => {
@@ -259,6 +259,7 @@ async function main() {
     day,
     year: String(args.date).slice(0, 4),
     dateDot: args.date.replace(/-/g, '.'),
+    total: lib.books.length, // 书库总数：卡片上的 NO. xxx / N 要跟着书库走，不能写死
   };
 
   const manifest = {

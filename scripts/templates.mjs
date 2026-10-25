@@ -62,7 +62,7 @@ export function coverHTML(book, ctx) {
 
   <div class="top">
     <div class="brand"><i></i>每 日 书 单</div>
-    <div class="issue mono"><em>NO.</em> ${esc(book.id)} <span>/ 100</span></div>
+    <div class="issue mono"><em>NO.</em> ${esc(book.id)} <span>/ ${esc(ctx.total || '100')}</span></div>
   </div>
   <div class="hair"></div>
   <div class="kicker">
